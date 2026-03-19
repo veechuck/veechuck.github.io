@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="VEECHUCK 超博众观 — 弹性工装卡盘制造商，专注异形件高效装夹解决方案。两爪卡盘、非标工装定制，服务超800家加工企业。浙江永康。">
+<meta name="keywords" content="两爪卡盘,弹性工装卡盘,异形件装夹,工装定制,超博众观,VEECHUCK,永康卡盘,自定心卡盘">
+<title>VEECHUCK 超博众观 — 弹性工装卡盘 · 异形件装夹专家</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════
+   DESIGN TOKENS
+═══════════════════════════════════ */
+:root {
+  --black:   #0A0A0A;
+  --ink:     #1D1D1F;
+  --gray1:   #3D3D3F;
+  --gray2:   #6E6E73;
+  --gray3:   #98989D;
+  --gray4:   #D2D2D7;
+  --gray5:   #F0F0F2;
+  --gray6:   #F8F8FA;
+  --white:   #FFFFFF;
+  --blue:    #0050C7;
+  --blue-dk: #003A96;
+  --blue-lt: #EBF0FF;
+
+  --font-display: 'DM Sans', 'Noto Sans SC', sans-serif;
+  --font-body:    'Noto Sans SC', 'DM Sans', sans-serif;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.45, 0, 0.55, 1);
+}
+
+/* ═══════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: var(--font-body);
+  background: var(--white);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+
+/* ═══════════════════════════════════
+   SCROLL ANIMATIONS
+═══════════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+}
+.reveal.visible { opacity: 1; transform: none; }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ═══════════════════════════════════
+   NAV
+═══════════════════════════════════ */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 0 48px;
+  height: 56px;
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  transition: background 0.3s;
+}
+.nav-logo {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--font-display);
+  font-weight: 900; font-size: 15px;
+  letter-spacing: 0.12em; color: var(--ink);
+}
+.nav-logo svg { width: 28px; height: 28px; }
+.nav-links {
+  display: flex; gap: 36px; list-style: none;
+}
+.nav-links a {
+  font-size: 13px; color: var(--gray2);
+  transition: color 0.2s;
+  letter-spacing: 0.02em;
+}
+.nav-links a:hover { color: var(--ink); }
+.nav-cta {
+  font-size: 13px; font-weight: 500;
+  padding: 8px 20px;
+  background: var(--blue);
+  color: white; border-radius: 20px;
+  transition: background 0.2s, transform 0.15s;
+  white-space: nowrap;
+}
+.nav-cta:hover { background: var(--blue-dk); transform: scale(1.02); }
+.nav-mobile-btn { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+
+/* ═══════════════════════════════════
+   HERO
+═══════════════════════════════════ */
+#hero {
+  min-height: 100svh;
+  padding-top: 56px;
+  display: flex; flex-direction: column;
+  background: var(--gray6);
+  position: relative; overflow: hidden;
+}
+.hero-content {
+  flex: 1; display: flex; flex-direction: column;
+  justify-content: center; align-items: flex-start;
+  padding: 80px 48px 48px;
+  max-width: 760px;
+  position: relative; z-index: 2;
+}
+.hero-eyebrow {
+  font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--blue); font-weight: 500; margin-bottom: 20px;
+  display: flex; align-items: center; gap: 10px;
+}
+.hero-eyebrow::before {
+  content: ''; display: block;
+  width: 24px; height: 1.5px; background: var(--blue);
+}
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(44px, 7vw, 88px);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.0;
+  color: var(--ink);
+  margin-bottom: 24px;
+}
+.hero-title em {
+  font-style: normal;
+  color: var(--blue);
+}
+.hero-subtitle {
+  font-size: clamp(15px, 2vw, 18px);
+  color: var(--gray1);
+  line-height: 1.7;
+  max-width: 560px;
+  margin-bottom: 40px;
+  font-weight: 300;
+}
+.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+.btn-primary {
+  padding: 14px 32px; background: var(--blue);
+  color: white; border-radius: 28px;
+  font-size: 15px; font-weight: 500;
+  transition: background 0.2s, transform 0.15s;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.btn-primary:hover { background: var(--blue-dk); transform: scale(1.02); }
+.btn-secondary {
+  padding: 14px 32px;
+  border: 1.5px solid var(--gray4);
+  color: var(--ink); border-radius: 28px;
+  font-size: 15px; font-weight: 400;
+  transition: border-color 0.2s, background 0.2s;
+}
+.btn-secondary:hover { border-color: var(--ink); background: var(--gray5); }
+
+.hero-stats {
+  display: flex; gap: 0;
+  border-top: 1px solid var(--gray4);
+  padding-top: 40px; margin-top: 16px;
+  width: 100%;
+}
+.hero-stat { flex: 1; padding-right: 32px; }
+.hero-stat:not(:last-child) { border-right: 1px solid var(--gray4); margin-right: 32px; }
+.hero-stat-num {
+  font-family: var(--font-display);
+  font-size: 36px; font-weight: 900;
+  letter-spacing: -0.03em; color: var(--ink);
+  line-height: 1;
+}
+.hero-stat-num span { font-size: 18px; font-weight: 500; }
+.hero-stat-label { font-size: 12px; color: var(--gray2); margin-top: 4px; letter-spacing: 0.03em; }
+
+/* 右侧产品图区域 */
+.hero-visual {
+  position: absolute; right: 0; top: 56px; bottom: 0;
+  width: 48%; display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, var(--gray5) 0%, var(--gray4) 100%);
+}
+.hero-img-placeholder {
+  width: 80%; aspect-ratio: 1;
+  background: var(--gray4);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+}
+.hero-img-placeholder::after {
+  content: '产品主图';
+  font-size: 13px; color: var(--gray3);
+}
+/* 实际使用时替换为: */
+/* .hero-visual img { width: 90%; object-fit: contain; } */
+
+/* ═══════════════════════════════════
+   SECTION COMMONS
+═══════════════════════════════════ */
+section { padding: 120px 48px; }
+.section-inner { max-width: 1200px; margin: 0 auto; }
+.section-label {
+  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--blue); font-weight: 500; margin-bottom: 12px;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 900; letter-spacing: -0.025em;
+  line-height: 1.1; color: var(--ink);
+  margin-bottom: 16px;
+}
+.section-sub {
+  font-size: 17px; color: var(--gray2);
+  line-height: 1.7; max-width: 600px;
+  font-weight: 300;
+}
+.rule { width: 32px; height: 2px; background: var(--blue); margin-bottom: 14px; }
+
+/* ═══════════════════════════════════
+   ABOUT SECTION
+═══════════════════════════════════ */
+#about { background: var(--white); }
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center;
+  margin-top: 64px;
+}
+.about-img {
+  aspect-ratio: 4/3;
+  background: var(--gray5);
+  border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden; position: relative;
+}
+.about-img::after {
+  content: '工厂外观 / 车间实拍';
+  font-size: 12px; color: var(--gray3);
+}
+.about-text p {
+  font-size: 16px; line-height: 1.85;
+  color: var(--gray1); margin-bottom: 20px;
+  font-weight: 300;
+}
+.about-text strong { color: var(--ink); font-weight: 500; }
+.about-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+.tag {
+  font-size: 12px; color: var(--blue);
+  border: 1px solid var(--blue);
+  padding: 5px 14px; border-radius: 16px;
+  letter-spacing: 0.04em;
+}
+
+/* ═══════════════════════════════════
+   PRODUCTS SECTION
+═══════════════════════════════════ */
+#products { background: var(--gray6); }
+.products-header { margin-bottom: 64px; }
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.product-card {
+  background: var(--white);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.3s var(--ease-out), box-shadow 0.3s;
+  cursor: default;
+}
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+}
+.product-card.featured {
+  grid-column: span 2;
+}
+.product-img {
+  width: 100%; aspect-ratio: 16/9;
+  background: var(--gray5);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+}
+.product-card.featured .product-img { aspect-ratio: 21/9; }
+.product-img::after {
+  content: attr(data-label);
+  font-size: 12px; color: var(--gray3);
+}
+.product-info { padding: 28px 28px 32px; }
+.product-tag {
+  display: inline-block; font-size: 10px;
+  background: var(--blue-lt); color: var(--blue);
+  padding: 3px 10px; border-radius: 12px;
+  font-weight: 500; letter-spacing: 0.06em;
+  text-transform: uppercase; margin-bottom: 12px;
+}
+.product-name {
+  font-family: var(--font-display);
+  font-size: 20px; font-weight: 700;
+  color: var(--ink); margin-bottom: 4px;
+  letter-spacing: -0.01em;
+}
+.product-name-zh { font-size: 13px; color: var(--blue); font-weight: 500; margin-bottom: 10px; }
+.product-desc { font-size: 14px; color: var(--gray2); line-height: 1.7; font-weight: 300; }
+.product-specs {
+  display: flex; gap: 0; margin-top: 20px;
+  padding-top: 20px; border-top: 1px solid var(--gray5);
+  flex-wrap: wrap;
+}
+.product-spec { flex: 1; min-width: 80px; }
+.product-spec-val { font-size: 15px; font-weight: 700; color: var(--ink); font-family: var(--font-display); }
+.product-spec-key { font-size: 10px; color: var(--gray3); margin-top: 2px; letter-spacing: 0.04em; }
+
+/* ═══════════════════════════════════
+   SPECS TABLE SECTION
+═══════════════════════════════════ */
+#specs { background: var(--white); }
+.specs-intro { margin-bottom: 48px; }
+.spec-table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--gray4); }
+table {
+  width: 100%; border-collapse: collapse;
+  font-size: 14px;
+}
+thead th {
+  background: var(--ink); color: white;
+  padding: 14px 20px; text-align: left;
+  font-weight: 500; font-size: 12px;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  white-space: nowrap;
+}
+thead th:first-child { border-radius: 11px 0 0 0; }
+thead th:last-child { border-radius: 0 11px 0 0; }
+tbody td { padding: 14px 20px; border-bottom: 1px solid var(--gray5); color: var(--gray1); }
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:hover td { background: var(--gray6); }
+.model-cell { font-weight: 700; color: var(--ink); font-family: var(--font-display); }
+.tbd { color: var(--gray3); font-size: 12px; }
+.spec-note {
+  margin-top: 16px; font-size: 12px; color: var(--gray3); line-height: 1.7;
+}
+
+/* ═══════════════════════════════════
+   SERVICE SECTION
+═══════════════════════════════════ */
+#service { background: var(--gray6); }
+.service-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: start;
+  margin-top: 64px;
+}
+.flow { display: flex; flex-direction: column; gap: 0; }
+.flow-item {
+  display: flex; gap: 20px;
+  padding-bottom: 32px; position: relative;
+}
+.flow-item:not(:last-child)::after {
+  content: '';
+  position: absolute; left: 19px; top: 40px;
+  width: 1px; height: calc(100% - 8px);
+  background: var(--gray4);
+}
+.flow-dot {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--ink); color: white;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 700;
+  flex-shrink: 0; font-family: var(--font-display);
+}
+.flow-body { flex: 1; padding-top: 8px; }
+.flow-title { font-size: 16px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+.flow-desc { font-size: 14px; color: var(--gray2); line-height: 1.7; font-weight: 300; }
+
+.service-highlights { display: flex; flex-direction: column; gap: 16px; }
+.highlight-card {
+  background: var(--white); border-radius: 12px;
+  padding: 24px 28px;
+  border: 1px solid var(--gray4);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.highlight-card:hover {
+  border-color: var(--blue);
+  box-shadow: 0 4px 20px rgba(0,80,199,0.08);
+}
+.highlight-num {
+  font-family: var(--font-display);
+  font-size: 32px; font-weight: 900; letter-spacing: -0.03em;
+  color: var(--ink); line-height: 1;
+}
+.highlight-num em { font-style: normal; font-size: 16px; font-weight: 400; color: var(--blue); margin-left: 2px; }
+.highlight-label { font-size: 13px; color: var(--gray2); margin-top: 4px; }
+
+/* ═══════════════════════════════════
+   CASES SECTION
+═══════════════════════════════════ */
+#cases { background: var(--white); }
+.cases-intro { margin-bottom: 16px; }
+.douyin-cta {
+  display: inline-flex; align-items: center; gap: 10px;
+  margin-bottom: 56px; margin-top: 8px;
+  padding: 12px 24px;
+  background: var(--gray6); border-radius: 32px;
+  border: 1px solid var(--gray4);
+  font-size: 14px; color: var(--gray1);
+  transition: border-color 0.2s;
+}
+.douyin-cta:hover { border-color: var(--gray3); }
+.douyin-icon {
+  width: 20px; height: 20px; border-radius: 4px;
+  background: var(--ink); display: flex; align-items: center; justify-content: center;
+}
+.douyin-icon svg { width: 12px; height: 12px; }
+.cases-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.case-card {
+  border-radius: 12px; overflow: hidden;
+  background: var(--gray6);
+  transition: transform 0.3s var(--ease-out);
+}
+.case-card:hover { transform: scale(1.02); }
+.case-img {
+  aspect-ratio: 1;
+  background: var(--gray5);
+  display: flex; align-items: center; justify-content: center;
+}
+.case-img::after { content: attr(data-label); font-size: 11px; color: var(--gray3); }
+.case-meta { padding: 14px 16px; }
+.case-industry { font-size: 13px; font-weight: 600; color: var(--ink); }
+.case-desc { font-size: 12px; color: var(--gray2); margin-top: 2px; line-height: 1.5; }
+
+.cases-more {
+  margin-top: 40px; text-align: center;
+  padding: 32px;
+  background: var(--gray6); border-radius: 16px;
+  border: 1px dashed var(--gray4);
+}
+.cases-more p { font-size: 15px; color: var(--gray2); margin-bottom: 16px; }
+.cases-more strong { color: var(--ink); }
+
+/* ═══════════════════════════════════
+   PATENTS SECTION
+═══════════════════════════════════ */
+#patents { background: var(--gray6); }
+.patents-grid {
+  display: grid; grid-template-columns: repeat(6, 1fr);
+  gap: 12px; margin-top: 48px;
+}
+.patent-card {
+  aspect-ratio: 0.75;
+  background: var(--white);
+  border-radius: 8px;
+  border: 1px solid var(--gray4);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 8px; padding: 12px;
+  transition: border-color 0.2s;
+}
+.patent-card:hover { border-color: var(--blue); }
+.patent-icon { font-size: 20px; }
+.patent-type { font-size: 9px; color: var(--gray3); letter-spacing: 0.08em; text-transform: uppercase; text-align: center; }
+
+/* ═══════════════════════════════════
+   CONTACT / FOOTER
+═══════════════════════════════════ */
+#contact {
+  background: var(--ink);
+  padding: 120px 48px 80px;
+  position: relative; overflow: hidden;
+}
+#contact::before {
+  content: '';
+  position: absolute; top: -200px; right: -200px;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,80,199,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.contact-inner { max-width: 1200px; margin: 0 auto; }
+.contact-top { margin-bottom: 80px; }
+.contact-slogan {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 900; letter-spacing: -0.03em;
+  line-height: 1.1; color: var(--white);
+  margin-bottom: 16px;
+}
+.contact-slogan em {
+  font-style: normal; color: var(--blue);
+}
+.contact-sub { font-size: 17px; color: var(--gray3); font-weight: 300; }
+
+.contact-grid {
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  gap: 48px; padding-top: 48px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.contact-col-title {
+  font-size: 11px; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--gray3);
+  margin-bottom: 20px;
+}
+.contact-item { margin-bottom: 14px; }
+.contact-key { font-size: 12px; color: var(--gray3); margin-bottom: 3px; }
+.contact-val { font-size: 15px; color: var(--white); font-weight: 400; }
+.contact-val a { color: var(--white); transition: color 0.2s; }
+.contact-val a:hover { color: var(--blue); }
+
+.qr-group { display: flex; gap: 20px; flex-wrap: wrap; }
+.qr-item { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.qr-box {
+  width: 72px; height: 72px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+}
+.qr-box span { font-size: 9px; color: var(--gray3); text-align: center; line-height: 1.4; }
+.qr-label { font-size: 11px; color: var(--gray3); }
+
+.footer-bottom {
+  margin-top: 64px; padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 12px;
+}
+.footer-brand { display: flex; align-items: center; gap: 10px; }
+.footer-brand span { font-size: 13px; color: var(--gray3); letter-spacing: 0.08em; font-weight: 700; font-family: var(--font-display); }
+.footer-copy { font-size: 12px; color: rgba(255,255,255,0.2); }
+
+/* ═══════════════════════════════════
+   MOBILE MENU
+═══════════════════════════════════ */
+.mobile-menu {
+  display: none; position: fixed; top: 56px; left: 0; right: 0; bottom: 0;
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: blur(20px);
+  z-index: 99; flex-direction: column;
+  padding: 32px 48px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-size: 22px; font-weight: 500;
+  padding: 16px 0; border-bottom: 1px solid var(--gray5);
+  color: var(--ink);
+}
+
+/* ═══════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════ */
+@media (max-width: 1024px) {
+  nav { padding: 0 24px; }
+  .nav-links { display: none; }
+  .nav-mobile-btn { display: block; }
+  section { padding: 80px 24px; }
+  .hero-content { padding: 60px 24px 40px; max-width: 100%; }
+  .hero-visual { display: none; }
+  .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .products-grid { grid-template-columns: 1fr; }
+  .product-card.featured { grid-column: span 1; }
+  .service-grid { grid-template-columns: 1fr; gap: 48px; }
+  .cases-grid { grid-template-columns: repeat(2, 1fr); }
+  .patents-grid { grid-template-columns: repeat(3, 1fr); }
+  .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+  #contact { padding: 80px 24px 60px; }
+}
+
+@media (max-width: 640px) {
+  .hero-stat-num { font-size: 26px; }
+  .hero-stats { gap: 0; }
+  .hero-stat { padding-right: 16px; }
+  .hero-stat:not(:last-child) { margin-right: 16px; }
+  .cases-grid { grid-template-columns: repeat(2, 1fr); }
+  .patents-grid { grid-template-columns: repeat(3, 1fr); }
+  .footer-bottom { flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ NAV ═══════════════ -->
+<nav>
+  <a href="#" class="nav-logo">
+    <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="16" cy="16" r="14" stroke="#0A0A0A" stroke-width="2"/>
+      <line x1="5" y1="16" x2="27" y2="16" stroke="#0A0A0A" stroke-width="2"/>
+      <line x1="16" y1="5" x2="16" y2="27" stroke="#0A0A0A" stroke-width="2"/>
+      <circle cx="16" cy="16" r="3.5" fill="#0050C7"/>
+    </svg>
+    VEECHUCK
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">关于我们</a></li>
+    <li><a href="#products">产品系列</a></li>
+    <li><a href="#service">工装定制</a></li>
+    <li><a href="#cases">案例展示</a></li>
+    <li><a href="#contact">联系我们</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">立即咨询</a>
+  <button class="nav-mobile-btn" onclick="toggleMenu()" aria-label="菜单">
+    <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+      <line x1="2" y1="6" x2="20" y2="6" stroke="#1D1D1F" stroke-width="2" stroke-linecap="round"/>
+      <line x1="2" y1="11" x2="20" y2="11" stroke="#1D1D1F" stroke-width="2" stroke-linecap="round"/>
+      <line x1="2" y1="16" x2="20" y2="16" stroke="#1D1D1F" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMenu()">关于我们</a>
+  <a href="#products" onclick="closeMenu()">产品系列</a>
+  <a href="#service" onclick="closeMenu()">工装定制</a>
+  <a href="#cases" onclick="closeMenu()">案例展示</a>
+  <a href="#contact" onclick="closeMenu()">联系我们</a>
+</div>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section id="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow reveal">Elastic Workholding Chuck System</div>
+    <h1 class="hero-title reveal reveal-delay-1">
+      异形件装夹，<br>从此<em>不再是难题</em>。
+    </h1>
+    <p class="hero-subtitle reveal reveal-delay-2">
+      VEECHUCK 超博众观，专注弹性工装卡盘研发制造。
+      一套卡盘系统，配合可替换工装模块，
+      高效解决 80% 以上的异形件装夹需求。
+    </p>
+    <div class="hero-actions reveal reveal-delay-3">
+      <a href="#products" class="btn-primary">
+        查看产品系列
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#service" class="btn-secondary">了解工装定制</a>
+    </div>
+    <div class="hero-stats reveal reveal-delay-4">
+      <div class="hero-stat">
+        <div class="hero-stat-num">800<span>+</span></div>
+        <div class="hero-stat-label">服务加工企业</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">30<span>+</span></div>
+        <div class="hero-stat-label">产品专利数量</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">10<span>年</span></div>
+        <div class="hero-stat-label">专注卡盘制造</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <!-- 替换为实际产品图: <img src="product-hero.png" alt="两爪卡盘产品图"> -->
+    <div class="hero-img-placeholder"></div>
+  </div>
+</section>
+
+<!-- ═══════════════ ABOUT ═══════════════ -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-img reveal">
+        <!-- <img src="factory.jpg" alt="超博众观工厂"> -->
+      </div>
+      <div class="about-text">
+        <div class="section-label reveal">About Us · 关于我们</div>
+        <div class="rule reveal reveal-delay-1"></div>
+        <h2 class="section-title reveal reveal-delay-1">我们从<br>加工一线来。</h2>
+        <p class="reveal reveal-delay-2">
+          <strong>VEECHUCK 超博众观</strong>成立于2015年，位于浙江·金华·永康。
+          在进入卡盘行业之前，我们积累了翻砂铸造、模具、机械加工等多个制造环节的经验。
+        </p>
+        <p class="reveal reveal-delay-2">
+          两爪卡盘的原型，来自于为解决一个<strong>具体异形件夹持难题</strong>而自行设计的夹具。
+          这套方案后来系统化、产品化，形成了今天超过 <strong>800 家</strong>加工企业选择的装夹系统。
+        </p>
+        <p class="reveal reveal-delay-3">
+          我们不做低价竞争，只做<strong>真正解决问题</strong>的卡盘。
+          需要我们的人，自然会找到我们。
+        </p>
+        <div class="about-tags reveal reveal-delay-3">
+          <span class="tag">30+ 项专利</span>
+          <span class="tag">注册商标</span>
+          <span class="tag">24h 发货</span>
+          <span class="tag">1年质保</span>
+          <span class="tag">浙江永康</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ PRODUCTS ═══════════════ -->
+<section id="products">
+  <div class="section-inner">
+    <div class="products-header">
+      <div class="section-label reveal">Products · 产品系列</div>
+      <div class="rule reveal reveal-delay-1"></div>
+      <h2 class="section-title reveal reveal-delay-1">覆盖车床与加工中心<br>全场景装夹需求。</h2>
+      <p class="section-sub reveal reveal-delay-2">从两爪弹性卡盘到三爪、后拉卡盘，配套自研电动气动动力系统。</p>
+    </div>
+
+    <div class="products-grid">
+
+      <!-- 核心产品：两爪卡盘 (featured) -->
+      <div class="product-card featured reveal">
+        <div class="product-img" data-label="两爪卡盘产品图（正面+侧面）">
+          <!-- <img src="two-jaw-chuck.jpg" alt="弹性工装两爪卡盘"> -->
+        </div>
+        <div class="product-info">
+          <span class="product-tag">核心主力</span>
+          <div class="product-name">TWO-JAW ELASTIC CHUCK</div>
+          <div class="product-name-zh">弹性工装自定心两爪卡盘</div>
+          <div class="product-desc">
+            公司首款核心产品，持续销售超10年。本质是一套"模架式装夹系统"——卡盘本体作为统一平台，
+            配合可快速替换的工装模块，无需频繁更换卡盘即可完成多种异形件装夹。
+            支持手动 / 电动 / 气动三种动力形式。
+          </div>
+          <div class="product-specs">
+            <div class="product-spec">
+              <div class="product-spec-val">200–630</div>
+              <div class="product-spec-key">外径型号 mm</div>
+            </div>
+            <div class="product-spec">
+              <div class="product-spec-val">3–5t</div>
+              <div class="product-spec-key">夹紧力（动力款）</div>
+            </div>
+            <div class="product-spec">
+              <div class="product-spec-val">≥5丝</div>
+              <div class="product-spec-key">适用精度范围</div>
+            </div>
+            <div class="product-spec">
+              <div class="product-spec-val">50%↓</div>
+              <div class="product-spec-key">毛坯误差吸收</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 同步平口钳 -->
+      <div class="product-card reveal reveal-delay-1">
+        <div class="product-img" data-label="同步平口钳产品图">
+          <!-- <img src="vise.jpg" alt="同步平口钳"> -->
+        </div>
+        <div class="product-info">
+          <span class="product-tag">加工中心</span>
+          <div class="product-name">SYNCHRONIZED VISE</div>
+          <div class="product-name-zh">同步平口钳</div>
+          <div class="product-desc">两爪卡盘逻辑在铣床/加工中心的延伸，继承弹性自定心的装夹理念。</div>
+        </div>
+      </div>
+
+      <!-- 三爪卡盘 -->
+      <div class="product-card reveal reveal-delay-2">
+        <div class="product-img" data-label="三爪卡盘产品图">
+          <!-- <img src="three-jaw.jpg" alt="创新三爪卡盘"> -->
+        </div>
+        <div class="product-info">
+          <span class="product-tag">创新结构</span>
+          <div class="product-name">THREE-JAW CHUCK</div>
+          <div class="product-name-zh">创新结构三爪卡盘</div>
+          <div class="product-desc">内部结构与市面常规三爪不同。含外径约1米超大规格电动三爪（世界首创），支持重切削。</div>
+        </div>
+      </div>
+
+      <!-- 后拉卡盘 -->
+      <div class="product-card reveal reveal-delay-1">
+        <div class="product-img" data-label="后拉卡盘产品图">
+          <!-- <img src="pull-back.jpg" alt="后拉卡盘"> -->
+        </div>
+        <div class="product-info">
+          <span class="product-tag">专项方案</span>
+          <div class="product-name">PULL-BACK CHUCK</div>
+          <div class="product-name-zh">后拉卡盘</div>
+          <div class="product-desc">三点后拉 / 双点后拉，适用特定装夹场景的专业解决方案。</div>
+        </div>
+      </div>
+
+      <!-- 配套件 -->
+      <div class="product-card reveal reveal-delay-2">
+        <div class="product-img" data-label="L型爪 / 配套件图">
+          <!-- <img src="accessories.jpg" alt="配套件"> -->
+        </div>
+        <div class="product-info">
+          <span class="product-tag">配套件</span>
+          <div class="product-name">ACCESSORIES</div>
+          <div class="product-name-zh">L型爪 · 弹性加长爪</div>
+          <div class="product-desc">多规格L型爪（两爪/平口钳用）、弹性加长爪（三爪专用）、电动/气动动力套件。</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SPECS TABLE ═══════════════ -->
+<section id="specs">
+  <div class="section-inner">
+    <div class="specs-intro">
+      <div class="section-label reveal">Specifications · 技术规格</div>
+      <div class="rule reveal reveal-delay-1"></div>
+      <h2 class="section-title reveal reveal-delay-1">两爪卡盘<br>型号规格参数</h2>
+    </div>
+    <div class="spec-table-wrap reveal reveal-delay-2">
+      <table>
+        <thead>
+          <tr>
+            <th>型号</th>
+            <th>外径</th>
+            <th>最小夹持径</th>
+            <th>最大夹持径</th>
+            <th>最高转速</th>
+            <th>夹紧力</th>
+            <th>重量</th>
+            <th>动力形式</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="model-cell">200 型</td>
+            <td>200 mm</td>
+            <td class="tbd">待补充</td>
+            <td class="tbd">待补充</td>
+            <td class="tbd">待补充 r.p.m</td>
+            <td>3–5 t</td>
+            <td class="tbd">待补充 kg</td>
+            <td>手动 / 电动 / 气动</td>
+          </tr>
+          <tr>
+            <td class="model-cell">250 型</td>
+            <td>250 mm</td>
+            <td class="tbd">待补充</td>
+            <td class="tbd">待补充</td>
+            <td class="tbd">待补充 r.p.m</td>
+            <td>3–5 t</td>
+            <td class="tbd">待补充 kg</td>
+            <td>手动 / 电动 / 气动</td>
+          </tr>
+          <tr>
+            <td class="model-cell">320 型</td>
+            <td>320 mm</td>
+            <td class="tbd">待补充</td>
+            <td class="tbd">待补充</td>
+            <td class="tbd">待补充 r.p.m</td>
+            <td>3–5 t</td>
+            <td class="tbd">待补充 kg</td>
+            <td>手动 / 电动 / 气动</td>
+          </tr>
+          <tr>
+            <td class="model-cell">400 型</td>
+            <td>400 mm</td>
+            <td class="tbd">待补充</td>
+            <td class="tbd">待补充</td>
+            <td class="tbd">待补充 r.p.m</td>
+            <td>3–5 t</td>
+            <td class="tbd">待补充 kg</td>
+            <td>手动 / 电动 / 气动</td>
+          </tr>
+          <tr>
+            <td class="model-cell">630 型</td>
+            <td>630 mm</td>
+            <td class="tbd">待补充</td>
+            <td class="tbd">待补充</td>
+            <td class="tbd">待补充 r.p.m</td>
+            <td>3–5 t</td>
+            <td class="tbd">待补充 kg</td>
+            <td>手动 / 电动 / 气动</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="spec-note reveal">* 爪钩材质：60Si2Mn 高刚性弹簧钢，一体锻打，长期使用不易变形。具体参数以实物及配套技术资料为准，如有变更恕不另行通知。</p>
+  </div>
+</section>
+
+<!-- ═══════════════ SERVICE ═══════════════ -->
+<section id="service">
+  <div class="section-inner">
+    <div class="section-label reveal">Custom Fixture · 工装定制</div>
+    <div class="rule reveal reveal-delay-1"></div>
+    <h2 class="section-title reveal reveal-delay-1">您的工件，<br>我们来配套。</h2>
+    <p class="section-sub reveal reveal-delay-2">发图纸或寄样件，全流程跟进，3–5个工作日交付。</p>
+
+    <div class="service-grid">
+      <div class="flow reveal reveal-delay-2">
+        <div class="flow-item">
+          <div class="flow-dot">1</div>
+          <div class="flow-body">
+            <div class="flow-title">提交需求</div>
+            <div class="flow-desc">发送图纸 / 图片 / 视频，或直接寄送样件至永康工厂</div>
+          </div>
+        </div>
+        <div class="flow-item">
+          <div class="flow-dot">2</div>
+          <div class="flow-body">
+            <div class="flow-title">技术评估</div>
+            <div class="flow-desc">工程师讨论装夹方案，确认可行性与初步报价</div>
+          </div>
+        </div>
+        <div class="flow-item">
+          <div class="flow-dot">3</div>
+          <div class="flow-body">
+            <div class="flow-title">确认合同</div>
+            <div class="flow-desc">签订合同，支付定金，明确交期与规格要求</div>
+          </div>
+        </div>
+        <div class="flow-item">
+          <div class="flow-dot">4</div>
+          <div class="flow-body">
+            <div class="flow-title">工装制作</div>
+            <div class="flow-desc">专业工人制作，约 3–5 个工作日（周一至周六）</div>
+          </div>
+        </div>
+        <div class="flow-item">
+          <div class="flow-dot">5</div>
+          <div class="flow-body">
+            <div class="flow-title">视频确认 · 发货</div>
+            <div class="flow-desc">视频确认效果，支付尾款，安排发货，次日提供物流单</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-highlights reveal reveal-delay-3">
+        <div class="highlight-card">
+          <div class="highlight-num">24<em>h 内</em></div>
+          <div class="highlight-label">标准件确认后发货时效</div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-num">3–5<em>工作日</em></div>
+          <div class="highlight-label">非标工装定制交期（周一至周六）</div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-num">1<em>年</em></div>
+          <div class="highlight-label">售后质量保修期</div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-num">800<em>+</em></div>
+          <div class="highlight-label">已服务加工企业数量</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ CASES ═══════════════ -->
+<section id="cases">
+  <div class="section-inner">
+    <div class="cases-intro">
+      <div class="section-label reveal">Classic Cases · 典型案例</div>
+      <div class="rule reveal reveal-delay-1"></div>
+      <h2 class="section-title reveal reveal-delay-1">每个工件，<br>都是一次验证。</h2>
+    </div>
+    <a href="https://www.douyin.com/user/超博众冠卡盘工厂" target="_blank" class="douyin-cta reveal reveal-delay-2">
+      <div class="douyin-icon">
+        <svg viewBox="0 0 24 24" fill="white"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.19 8.19 0 004.79 1.54V6.78a4.85 4.85 0 01-1.02-.09z"/></svg>
+      </div>
+      <span>抖音「超博众冠卡盘工厂」— 600+ 个工装案例实拍视频</span>
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="margin-left:4px"><path d="M2 7h10M8 3l4 4-4 4" stroke="#6E6E73" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+
+    <div class="cases-grid">
+      <div class="case-card reveal">
+        <div class="case-img" data-label="阀门工装案例图"></div>
+        <div class="case-meta">
+          <div class="case-industry">阀门 · Valve</div>
+          <div class="case-desc">异形阀体，L型爪快速适配，自定心装夹</div>
+        </div>
+      </div>
+      <div class="case-card reveal reveal-delay-1">
+        <div class="case-img" data-label="水泵工装案例图"></div>
+        <div class="case-meta">
+          <div class="case-industry">水泵 · Pump</div>
+          <div class="case-desc">泵体法兰件，毛坯误差吸收，效率显著提升</div>
+        </div>
+      </div>
+      <div class="case-card reveal reveal-delay-2">
+        <div class="case-img" data-label="弯管工装案例图"></div>
+        <div class="case-meta">
+          <div class="case-industry">弯管 · Elbow</div>
+          <div class="case-desc">L型爪配合，装夹稳定性优秀</div>
+        </div>
+      </div>
+      <div class="case-card reveal reveal-delay-3">
+        <div class="case-img" data-label="异形件工装案例图"></div>
+        <div class="case-meta">
+          <div class="case-industry">异形件 · Special Parts</div>
+          <div class="case-desc">150–450mm 中长异形毛坯，覆盖非标需求</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cases-more reveal">
+      <p>以上仅为部分展示。抖音账号「超博众冠卡盘工厂」有 <strong>600+ 个真实工装案例视频</strong>，涵盖数百种不同工件类型。</p>
+      <a href="https://www.douyin.com" target="_blank" class="btn-primary" style="display:inline-flex">
+        查看全部视频案例
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ PATENTS ═══════════════ -->
+<section id="patents">
+  <div class="section-inner">
+    <div class="section-label reveal">Patents · 专利荣誉</div>
+    <div class="rule reveal reveal-delay-1"></div>
+    <h2 class="section-title reveal reveal-delay-1">30+ 项专利，<br>是技术护城河，也是承诺。</h2>
+    <p class="section-sub reveal reveal-delay-2">核心工序通过自主设计专用设备完成。即使单一部件被模仿，也无法形成完整可用系统。</p>
+    <div class="patents-grid">
+      <div class="patent-card reveal"><div class="patent-icon">📋</div><div class="patent-type">发明专利<br>编号待补充</div></div>
+      <div class="patent-card reveal reveal-delay-1"><div class="patent-icon">📋</div><div class="patent-type">发明专利<br>编号待补充</div></div>
+      <div class="patent-card reveal reveal-delay-2"><div class="patent-icon">📋</div><div class="patent-type">发明专利<br>编号待补充</div></div>
+      <div class="patent-card reveal reveal-delay-1"><div class="patent-icon">📄</div><div class="patent-type">实用新型<br>编号待补充</div></div>
+      <div class="patent-card reveal reveal-delay-2"><div class="patent-icon">📄</div><div class="patent-type">实用新型<br>编号待补充</div></div>
+      <div class="patent-card reveal reveal-delay-3"><div class="patent-icon">📄</div><div class="patent-type">实用新型<br>编号待补充</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ CONTACT ═══════════════ -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="contact-top">
+      <div class="contact-slogan reveal">
+        让每一次装夹，<br>都<em>简单高效</em>。
+      </div>
+      <p class="contact-sub reveal reveal-delay-1">Where Precision Meets Efficiency — VEECHUCK 超博众观</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="reveal">
+        <div class="contact-col-title">联系方式</div>
+        <div class="contact-item">
+          <div class="contact-key">微信 / 电话</div>
+          <div class="contact-val">请补充联系方式</div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-key">工厂地址</div>
+          <div class="contact-val" style="font-size:14px">浙江省·金华市·永康市<br>（详细地址待补充）</div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-key">工作时间</div>
+          <div class="contact-val">周一至周六 · 标准件24h发货</div>
+        </div>
+      </div>
+
+      <div class="reveal reveal-delay-1">
+        <div class="contact-col-title">在线渠道</div>
+        <div class="contact-item">
+          <div class="contact-key">抖音账号</div>
+          <div class="contact-val"><a href="https://www.douyin.com" target="_blank">超博众冠卡盘工厂</a></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-key">淘宝店铺</div>
+          <div class="contact-val">请补充店铺名称</div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-key">视频号</div>
+          <div class="contact-val">请补充视频号</div>
+        </div>
+      </div>
+
+      <div class="reveal reveal-delay-2">
+        <div class="contact-col-title">扫码联系</div>
+        <div class="qr-group">
+          <div class="qr-item">
+            <div class="qr-box"><span>微信<br>二维码</span></div>
+            <div class="qr-label">微信咨询</div>
+          </div>
+          <div class="qr-item">
+            <div class="qr-box"><span>抖音<br>二维码</span></div>
+            <div class="qr-label">抖音主页</div>
+          </div>
+          <div class="qr-item">
+            <div class="qr-box"><span>淘宝<br>二维码</span></div>
+            <div class="qr-label">淘宝店铺</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-brand">
+        <svg width="24" height="24" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="14" stroke="rgba(255,255,255,0.3)" stroke-width="2"/><line x1="5" y1="16" x2="27" y2="16" stroke="rgba(255,255,255,0.3)" stroke-width="2"/><line x1="16" y1="5" x2="16" y2="27" stroke="rgba(255,255,255,0.3)" stroke-width="2"/><circle cx="16" cy="16" r="3.5" fill="#0050C7"/></svg>
+        <span>VEECHUCK</span>
+      </div>
+      <div class="footer-copy">© 2025 超博众观工贸有限公司 · 浙江永康 · 产品参数如有变更恕不另行通知</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SCRIPTS ═══════════════ -->
+<script>
+// 滚动动画
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// 立即触发视口内元素
+setTimeout(() => {
+  document.querySelectorAll('.reveal').forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight) el.classList.add('visible');
+  });
+}, 100);
+
+// 移动端菜单
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+function closeMenu() {
+  document.getElementById('mobileMenu').classList.remove('open');
+}
+
+// Nav 滚动效果
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  nav.style.boxShadow = window.scrollY > 20
+    ? '0 1px 20px rgba(0,0,0,0.08)'
+    : 'none';
+});
+</script>
+</body>
+</html>
